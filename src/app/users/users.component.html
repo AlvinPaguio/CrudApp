@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="col-md-12">
+    <h1>User List</h1>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Username</th>
+        <th class="text-center">email</th>
+        <th class="text-center"></th>
+        <th class="text-center"></th>
+        <th class="text-center"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button style="background-color: green" type="button" class="btn btn-primary" (click)="openCreateModal()">Create</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="openEditModal(user)">Edit</button>
+        </td>
+        <td>
+        <button style="background-color: red; color: #FFFFFF;" class="delete" title="delete user"
+                (click)="delete(user)">Delete
+        </button>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+

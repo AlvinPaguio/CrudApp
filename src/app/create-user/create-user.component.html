@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Add New User</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+
+    <div>
+      <label>Name:
+        <input [(ngModel)]="user.name"/>
+      </label><br>
+      <label>Username:
+        <input [(ngModel)]="user.username"/>
+      </label><br>
+      <label>Email:
+        <input [(ngModel)]="user.email"/>
+      </label><br>
+      <label>Address:
+        <input [(ngModel)]="user.address.street"/><br>
+        <input [(ngModel)]="user.address.suite"/><br>
+        <input [(ngModel)]="user.address.city"/><br>
+        <input [(ngModel)]="user.address.zipcode"/><br>
+        <input [(ngModel)]="user.address.lat"/><br>
+        <input [(ngModel)]="user.address.lng"/><br>
+      </label><br>
+      <label>Phone:
+        <input [(ngModel)]="user.phone"/>
+      </label><br>
+      <label>Website:
+        <input [(ngModel)]="user.website"/>
+      </label><br>
+      <label>Company:
+        <input #CompanyName/><br>
+        <input #phrase/><br>
+        <input #bs/>
+      </label>
+
+
+
+    </div>
+
+<div> <button (click)="add(user)">Save</button></div>
+  </div>
+
+
+
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+</div>
