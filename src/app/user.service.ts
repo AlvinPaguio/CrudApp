@@ -30,6 +30,6 @@ export class UserService {
 
   /** POST: add a new hero to the server */
   addUser(user: User): Observable<User> {
-    return this.restangular.all('user').post(user);
+    return this.restangular.all('users').post(user);
   }
 }

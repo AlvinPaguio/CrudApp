@@ -32,9 +32,9 @@
         <input [(ngModel)]="user.website"/>
       </label><br>
       <label>Company:
-        <input #CompanyName/><br>
-        <input #phrase/><br>
-        <input #bs/>
+        <input [(ngModel)]="user.company.name"/><br>
+        <input [(ngModel)]="user.company.catchPhrase"/><br>
+        <input [(ngModel)]="user.company.bs"/>
       </label>
 
 
