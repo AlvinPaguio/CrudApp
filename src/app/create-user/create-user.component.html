@@ -9,15 +9,15 @@
 
     <div>
       <label>Name:
-        <input [(ngModel)]="user.name"/>
+        <input [(ngModel)]="user.name" #name/>
       </label><br>
       <label>Username:
         <input [(ngModel)]="user.username"/>
       </label><br>
       <label>Email:
         <input [(ngModel)]="user.email"/>
-      </label><br>
-      <label>Address:
+      </label><br><br>
+      <label>Address:<br>
         <input [(ngModel)]="user.address.street"/><br>
         <input [(ngModel)]="user.address.suite"/><br>
         <input [(ngModel)]="user.address.city"/><br>
@@ -38,11 +38,8 @@
       </label>
     </div>
 
-<div> <button (click)="add.call(user)">Save</button></div>
+<div> <button class="btn btn-default" (click)="add.call(user)">Save</button></div>
   </div>
-
-
-
 
 <div class="modal-footer">
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>

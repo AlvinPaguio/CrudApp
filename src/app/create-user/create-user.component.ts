@@ -14,7 +14,6 @@ import { Company } from '../company';
 export class CreateUserComponent implements OnInit {
   public user: User;
   users: User[];
-  public context;
   public add: Function;
 
   constructor(public bsModalRef: BsModalRef,
@@ -27,10 +26,4 @@ export class CreateUserComponent implements OnInit {
 
     console.log(this.user);
   }
-
-  save(): void {
-    this.userService.updateUser(this.user)
-        .subscribe();
-  }
-
 }

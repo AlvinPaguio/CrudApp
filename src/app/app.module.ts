@@ -12,6 +12,7 @@ import { UsersComponent } from './users/users.component';
 import { ModalModule } from 'ngx-bootstrap';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
 
 export function RestangularConfigFactory(RestangularProvider) {
   RestangularProvider.setBaseUrl('https://jsonplaceholder.typicode.com/');
@@ -24,7 +25,8 @@ export function RestangularConfigFactory(RestangularProvider) {
     UserDetailsComponent,
     UsersComponent,
     EditUserComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    DeleteUserComponent
   ],
   imports: [
     ModalModule.forRoot(),
@@ -35,6 +37,6 @@ export function RestangularConfigFactory(RestangularProvider) {
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
-  entryComponents: [EditUserComponent, CreateUserComponent],
+  entryComponents: [EditUserComponent, CreateUserComponent, DeleteUserComponent],
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Address } from './address';
 import { Company } from './company';
+import { Geo } from './geo';
 
 
 export class User {
@@ -10,5 +11,6 @@ export class User {
   website: string;
   username: string;
   address: Address;
+  geo: Geo;
   company: Company;
 }

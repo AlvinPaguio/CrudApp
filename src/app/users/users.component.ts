@@ -5,6 +5,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 import { CreateUserComponent } from '../create-user/create-user.component';
+import { DeleteUserComponent } from '../delete-user/delete-user.component';
 
 @Component({
   selector: 'app-users',
@@ -32,6 +33,13 @@ export class UsersComponent implements OnInit {
     this.bsModalRef.content.add = this.add;
   }
 
+  public openDeleteModal(user) {
+    this.bsModalRef = this.modalService.show(DeleteUserComponent);
+    this.bsModalRef.content.context = this;
+    this.bsModalRef.content.user = user;
+    this.bsModalRef.content.delete = this.delete;
+  }
+
   ngOnInit() {
     this.getUsers();
   }
@@ -45,7 +53,7 @@ export class UsersComponent implements OnInit {
 
   delete(user: User): void {
     this.users = this.users.filter(h => h !== user);
-    this.userService.deleteUser(user).subscribe();
+    this.userService.deleteUser(user).subscribe(user =>{this.bsModalRef.hide()});
   }
 
 
