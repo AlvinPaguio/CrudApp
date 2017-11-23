@@ -28,6 +28,8 @@ export class UsersComponent implements OnInit {
 
   public openCreateModal() {
     this.bsModalRef = this.modalService.show(CreateUserComponent);
+    this.bsModalRef.content.context = this;
+    this.bsModalRef.content.add = this.add;
   }
 
   ngOnInit() {
@@ -51,6 +53,15 @@ export class UsersComponent implements OnInit {
     this.userService.updateUser(user)
         .subscribe(user =>{
           this.bsModalRef.hide();
+        });
+  }
+
+  add(user): void {
+    console.log(user);
+    if (!user) { return; }
+    this.userService.addUser(user)
+        .subscribe(_user => {
+          this.users.push(_user);
         });
   }
 }
