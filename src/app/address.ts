@@ -1,3 +1,5 @@
+import { Geo } from './geo';
+
 export class Address {
   street: string;
   suite: string;
@@ -5,4 +7,5 @@ export class Address {
   zipcode: string;
   lat: string;
   lng: string;
+  geo: Geo;
 }

@@ -12,9 +12,8 @@ import { Company } from '../company';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
-  public user: User;
+  user: User;
   users: User[];
-  public add: Function;
 
   constructor(public bsModalRef: BsModalRef,
               private userService: UserService) { }
@@ -23,7 +22,14 @@ export class CreateUserComponent implements OnInit {
     this.user = new User();
     this.user.address = new Address();
     this.user.company = new Company();
-
     console.log(this.user);
+  }
+
+  add(user): void {
+    console.log(user);
+    this.userService.addUser(user)
+        .subscribe(_user => {
+          this.users.push(_user);
+        });
   }
 }

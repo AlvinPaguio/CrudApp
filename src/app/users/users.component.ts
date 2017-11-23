@@ -29,8 +29,7 @@ export class UsersComponent implements OnInit {
 
   public openCreateModal() {
     this.bsModalRef = this.modalService.show(CreateUserComponent);
-    this.bsModalRef.content.context = this;
-    this.bsModalRef.content.add = this.add;
+    this.bsModalRef.content.users = this.users;
   }
 
   public openDeleteModal(user) {
@@ -52,7 +51,9 @@ export class UsersComponent implements OnInit {
   }
 
   delete(user: User): void {
-    this.users = this.users.filter(h => h !== user);
+    this.users = this.users.filter(h => {
+      return h.id !== user.id;
+    });
     this.userService.deleteUser(user).subscribe(user =>{this.bsModalRef.hide()});
   }
 
@@ -61,15 +62,6 @@ export class UsersComponent implements OnInit {
     this.userService.updateUser(user)
         .subscribe(user =>{
           this.bsModalRef.hide();
-        });
-  }
-
-  add(user): void {
-    console.log(user);
-    if (!user) { return; }
-    this.userService.addUser(user)
-        .subscribe(_user => {
-          this.users.push(_user);
         });
   }
 }

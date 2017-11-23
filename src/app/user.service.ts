@@ -4,11 +4,15 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Restangular } from 'ngx-restangular';
 import { User } from './user';
+import { Todo } from './todos';
+import { Post } from './posts';
 
 @Injectable()
 export class UserService {
 
   private users: User[];
+  private todos: Todo[];
+  private posts: Post[];
 
   constructor(private restangular: Restangular) { }
 
@@ -32,4 +36,13 @@ export class UserService {
   addUser(user: User): Observable<User> {
     return this.restangular.all('users').post(user);
   }
+
+  getUserTodos(id: string): Observable<Todo[]> {
+    return this.restangular.one('users', id).all('todos').getList();
+  }
+
+  getUserPosts(id: string): Observable<Post[]> {
+    return this.restangular.one('users', id).all('posts').getList();
+  }
+
 }

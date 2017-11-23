@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { Todo } from '../todos';
+import { Post } from '../posts';
 
 @Component({
   selector: 'app-user-details',
@@ -9,15 +13,34 @@ import { User } from '../user';
 })
 export class UserDetailsComponent implements OnInit {
 
-  @Input() user: User;
+  todos: Todo[];
+  posts: Post[];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private route: ActivatedRoute,
+              private location: Location) { }
 
   ngOnInit() {
+    this.getUserTodos();
+    this.getUserPosts();
+    console.log(this.getUserTodos());
   }
 
-  update(): void {
-    this.userService.updateUser(this.user)
-        .subscribe();
+  getUserTodos(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.userService.getUserTodos(id)
+        .subscribe(todo => this.todos = todo);
   }
+
+  getUserPosts(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.userService.getUserPosts(id)
+        .subscribe(post => this.posts = post);
+  }
+
+
+  goBack(): void {
+    this.location.back();
+  }
+
 }

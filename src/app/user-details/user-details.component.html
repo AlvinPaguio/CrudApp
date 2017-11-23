@@ -1,11 +1,54 @@
-<div *ngIf="user">
+<button (click)="goBack()">go back</button>
 
-  <h2>{{ user.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{user.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="user.name" placeholder="name"/>
-    </label>
+<div class="container">
+  <div class="col-md-12">
+    <h1>User Todos</h1>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+      <tr>
+        <th class="text-center">userId</th>
+        <th class="text-center">id</th>
+        <th class="text-center">Title</th>
+        <th class="text-center">completed</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let todo of todos">
+        <td>{{ todo.userId }}</td>
+        <td>{{ todo.id }}</td>
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.completed }}</td>
+      </tr>
+
+      </tbody>
+    </table>
   </div>
-  <button (click)="update()">save</button>
+</div><br>
+
+<div class="container">
+  <div class="col-md-12">
+    <h1>User Posts</h1>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+      <tr>
+        <th class="text-center">userId</th>
+        <th class="text-center">id</th>
+        <th class="text-center">Title</th>
+        <th class="text-center">completed</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let post of posts">
+        <td>{{ post.userId }}</td>
+        <td>{{ post.id }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.body }}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
 </div>
+
+
+

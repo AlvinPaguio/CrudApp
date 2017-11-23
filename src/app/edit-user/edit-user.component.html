@@ -19,17 +19,45 @@
       <label>Email:
         <input [(ngModel)]="user.email" placeholder="email"/>
       </label><br>
+      <label>Street:
+        <input [(ngModel)]="user.address.street" placeholder="username"/>
+      </label><br>
+      <label>Username:
+        <input [(ngModel)]="user.address.suite" placeholder="suite"/>
+      </label><br>
+      <label>City:
+        <input [(ngModel)]="user.address.city" placeholder="city"/>
+      </label><br>
+      <label>Zipcode:
+        <input [(ngModel)]="user.address.zipcode" placeholder="zipcode"/>
+      </label><br>
+      <label>lat:
+        <input [(ngModel)]="user.address.geo.lat" placeholder="lat"/>
+      </label><br>
+      <label>lng:
+        <input [(ngModel)]="user.address.geo.lng" placeholder="lng"/>
+      </label><br>
       <label>Phone:
         <input [(ngModel)]="user.phone" placeholder="phone"/>
       </label><br>
       <label>Website:
         <input [(ngModel)]="user.website" placeholder="website"/>
       </label><br>
+      <label>Company:
+        <input [(ngModel)]="user.company.name" placeholder="Company Name"/>
+      </label><br>
+      <label>catchPhrase:
+        <input [(ngModel)]="user.company.catchPhrase" placeholder="phrase"/>
+      </label><br>
+      <label>bs:
+        <input [(ngModel)]="user.company.bs" placeholder="bs"/>
+      </label><br>
     </div>
 
   </div>
-  <button (click)="update.call(context, user)">save</button>
 </div>
-<div class="modal-footer">
+
+<button class="btn btn-default" (click)="update.call(context, user)">save</button>
+<div class="modal-footer"><br><br>
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
 </div>
