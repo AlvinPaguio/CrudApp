@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Todo } from '../todo';
 import { Post } from '../post';
+import { PostService } from '../post.service';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-user-details',
@@ -16,6 +18,8 @@ export class UserDetailsComponent implements OnInit {
   posts: Post[];
 
   constructor(private userService: UserService,
+              private postService: PostService,
+              private todoService: TodoService,
               private route: ActivatedRoute,
               private location: Location) { }
 
@@ -27,13 +31,13 @@ export class UserDetailsComponent implements OnInit {
 
   getUserTodos(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.userService.getUserTodos(id)
+    this.todoService.getUserTodos(id)
         .subscribe(todo => this.todos = todo);
   }
 
   getUserPosts(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.userService.getUserPosts(id)
+    this.postService.getUserPosts(id)
         .subscribe(post => this.posts = post);
   }
 

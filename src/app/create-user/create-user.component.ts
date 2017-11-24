@@ -28,7 +28,7 @@ export class CreateUserComponent implements OnInit {
     console.log(user);
     this.userService.addUser(user)
         .subscribe(_user => {
-          this.users.push(_user);
+          this.users.push(_user), this.bsModalRef.hide();
         });
   }
 }

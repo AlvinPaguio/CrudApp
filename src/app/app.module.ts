@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
@@ -12,6 +12,8 @@ import { ModalModule } from 'ngx-bootstrap';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { PostService } from './post.service';
+import { TodoService } from './todo.service';
 
 export function RestangularConfigFactory(RestangularProvider) {
   RestangularProvider.setBaseUrl('https://jsonplaceholder.typicode.com/');
@@ -34,7 +36,7 @@ export function RestangularConfigFactory(RestangularProvider) {
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService, PostService, TodoService],
   bootstrap: [AppComponent],
   entryComponents: [EditUserComponent, CreateUserComponent, DeleteUserComponent],
 })
