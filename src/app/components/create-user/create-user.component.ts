@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
-import { UserService } from '../user.service';
-import { User } from '../user';
-import { Address } from '../address';
-import { Company } from '../company';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user.model';
+import { Address } from '../../address';
+import { Company } from '../../models/company.model';
+import { UserStores } from '../../stores/user.stores';
 
 @Component({
   selector: 'app-create-user',
@@ -15,7 +16,8 @@ export class CreateUserComponent implements OnInit {
   users: User[];
 
   constructor(public bsModalRef: BsModalRef,
-              private userService: UserService) { }
+              private userService: UserService,
+              private userStore: UserStores) { }
 
   ngOnInit() {
     this.user = new User();
@@ -25,10 +27,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   add(user): void {
-    console.log(user);
-    this.userService.addUser(user)
-        .subscribe(_user => {
-          this.users.push(_user), this.bsModalRef.hide();
-        });
+    this.userStore.addUser(user);
+    this.bsModalRef.hide();
   }
 }

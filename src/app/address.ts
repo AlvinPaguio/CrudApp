@@ -1,4 +1,4 @@
-import { Geo } from './geo';
+import { Geo } from './models/geo.model';
 
 export class Address {
   street: string;

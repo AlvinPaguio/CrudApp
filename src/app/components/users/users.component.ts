@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { UserService } from '../user.service';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { clone, find } from 'lodash';
+import { UserStores } from '../../stores/user.stores';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -19,7 +21,9 @@ export class UsersComponent implements OnInit {
   users: User[];
 
   constructor(private userService: UserService,
-              private modalService: BsModalService) { }
+              private modalService: BsModalService,
+              private userStore: UserStores,
+              private route: ActivatedRoute) { }
 
   public openEditModal(user) {
     this.bsModalRef = this.modalService.show(EditUserComponent);
@@ -42,10 +46,15 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+    this.route.data
+        .subscribe((data) => {
+      console.log(data);
+          this.userStore.storeUsers(data.users);
+        });
   }
 
   getUsers(): void {
-    this.userService.getUsers()
+    this.userStore.getUsers()
         .subscribe(users => {
           this.users = users;
         });

@@ -2,18 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Provider } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { FormsModule } from '@angular/forms';
 import { RestangularModule } from 'ngx-restangular';
 import { AppRoutingModule } from './/app-routing.module';
-import { UserService } from './user.service';
-import { UsersComponent } from './users/users.component';
+import { UserService } from './services/user.service';
+import { UsersComponent } from './components/users/users.component';
 import { ModalModule } from 'ngx-bootstrap';
-import { EditUserComponent } from './edit-user/edit-user.component';
-import { CreateUserComponent } from './create-user/create-user.component';
-import { DeleteUserComponent } from './delete-user/delete-user.component';
-import { PostService } from './post.service';
-import { TodoService } from './todo.service';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { CreateUserComponent } from './components/create-user/create-user.component';
+import { DeleteUserComponent } from './components/delete-user/delete-user.component';
+import { PostService } from './services/post.service';
+import { TodoService } from './services/todo.service';
+import { UserStores } from './stores/user.stores';
 
 export function RestangularConfigFactory(RestangularProvider) {
   RestangularProvider.setBaseUrl('https://jsonplaceholder.typicode.com/');
@@ -36,7 +37,7 @@ export function RestangularConfigFactory(RestangularProvider) {
     FormsModule,
     AppRoutingModule
   ],
-  providers: [UserService, PostService, TodoService],
+  providers: [UserService, PostService, TodoService, UserStores],
   bootstrap: [AppComponent],
   entryComponents: [EditUserComponent, CreateUserComponent, DeleteUserComponent],
 })

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Restangular } from 'ngx-restangular';
-import { Post } from './post';
+import { Post } from '../models/post.model';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()

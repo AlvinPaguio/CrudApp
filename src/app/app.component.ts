@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserStores } from './stores/user.stores';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Crud App';
+
 }

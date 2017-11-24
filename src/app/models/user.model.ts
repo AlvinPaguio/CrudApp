@@ -1,6 +1,6 @@
-import { Address } from './address';
-import { Company } from './company';
-import { Geo } from './geo';
+import { Address } from '../address';
+import { Company } from './company.model';
+import { Geo } from './geo.model';
 
 
 export class User {

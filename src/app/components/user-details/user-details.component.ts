@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Todo } from '../todo';
-import { Post } from '../post';
-import { PostService } from '../post.service';
-import { TodoService } from '../todo.service';
+import { Todo } from '../../models/todo.model';
+import { Post } from '../../models/post.model';
+import { PostService } from '../../services/post.service';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-user-details',
