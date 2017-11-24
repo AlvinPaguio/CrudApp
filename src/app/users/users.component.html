@@ -12,7 +12,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let user of users">
-        <td><a routerLink="../users/{{user.id}}/todos">
+        <td><a routerLink="../../users/{{user.id}}/posts-todos">
           <span class="badge">{{user.id}}</span>
         </a></td>
         <td>{{ user.name }}</td>

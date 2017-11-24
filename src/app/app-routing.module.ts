@@ -5,8 +5,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/users', pathMatch: 'full' },
-  { path: 'users', component: UsersComponent },
-  { path: 'users/:id/todos', component: UserDetailsComponent }
+  { path: 'add/users', component: UsersComponent },
+  { path: 'users/:id/posts-todos', component: UserDetailsComponent }
 ];
 
 @NgModule({

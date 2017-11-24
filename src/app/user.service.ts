@@ -2,13 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Restangular } from 'ngx-restangular';
 import { User } from './user';
-import { Todo } from './todo';
 
 @Injectable()
 export class UserService {
 
   private users: User[];
-  private todos: Todo[];
 
   constructor(private restangular: Restangular) { }
 
@@ -24,7 +22,6 @@ export class UserService {
 
   deleteUser(user: User | number): Observable<User> {
     const id = typeof user === 'number' ? user : user.id;
-
     return this.restangular.one('users', id).remove();
   }
 

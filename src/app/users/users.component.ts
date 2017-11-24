@@ -6,6 +6,7 @@ import { BsModalRef } from 'ngx-bootstrap';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
+import { clone, find } from 'lodash';
 
 @Component({
   selector: 'app-users',
@@ -22,9 +23,9 @@ export class UsersComponent implements OnInit {
 
   public openEditModal(user) {
     this.bsModalRef = this.modalService.show(EditUserComponent);
-    this.bsModalRef.content.user = user;
+    this.bsModalRef.content.users = this.users;
+    this.bsModalRef.content.user = clone(user);
     this.bsModalRef.content.context = this;
-    this.bsModalRef.content.update = this.update;
   }
 
   public openCreateModal() {
@@ -36,7 +37,7 @@ export class UsersComponent implements OnInit {
     this.bsModalRef = this.modalService.show(DeleteUserComponent);
     this.bsModalRef.content.context = this;
     this.bsModalRef.content.user = user;
-    this.bsModalRef.content.delete = this.delete;
+    this.bsModalRef.content.users = this.users;
   }
 
   ngOnInit() {
@@ -50,17 +51,12 @@ export class UsersComponent implements OnInit {
         });
   }
 
-  delete(user: User): void {
-    this.users = this.users.filter(h => {
-      return h.id !== user.id;
-    });
-    this.userService.deleteUser(user).subscribe(user =>{this.bsModalRef.hide()});
-  }
-
-
-  update(user: User): void {
+  update(user): void {
     this.userService.updateUser(user)
-        .subscribe(user =>{
+        .subscribe(u => {
+          const $user = find(this.users, {id: u.id});
+          Object.assign($user, u);
+          console.log($user);
           this.bsModalRef.hide();
         });
   }
