@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { Restangular } from 'ngx-restangular';
 import { User } from './user';
-import { Todo } from './todos';
-import { Post } from './posts';
+import { Todo } from './todo';
+import { Post } from './post';
 
 @Injectable()
 export class UserService {

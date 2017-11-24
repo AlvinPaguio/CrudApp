@@ -1,7 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
-import { User } from '../user';
-import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -12,8 +10,7 @@ export class EditUserComponent implements OnInit {
   public user;
   public context;
   public update: Function;
-  constructor(public bsModalRef: BsModalRef,
-              private userService: UserService) {}
+  constructor(public bsModalRef: BsModalRef) {}
 
   ngOnInit() {
   }

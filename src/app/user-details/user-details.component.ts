@@ -1,10 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import { User } from '../user';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Todo } from '../todos';
-import { Post } from '../posts';
+import { Todo } from '../todo';
+import { Post } from '../post';
 
 @Component({
   selector: 'app-user-details',

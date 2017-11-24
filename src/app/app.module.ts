@@ -6,7 +6,6 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { FormsModule } from '@angular/forms';
 import { RestangularModule } from 'ngx-restangular';
 import { AppRoutingModule } from './/app-routing.module';
-import { User } from './user';
 import { UserService } from './user.service';
 import { UsersComponent } from './users/users.component';
 import { ModalModule } from 'ngx-bootstrap';

@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap';
-import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { Address } from '../address';
